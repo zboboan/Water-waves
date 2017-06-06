@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水波纹效果</title>
+    <script src="./js/waterRipple.js"></script>
+    <style>
+        a { text-decoration:none; color:#333;  }
+        a:hover { text-decoration:none; }
+        #box ul li{
+            width:170px;
+            height:50px;
+            list-style:none;
+            background:#ddd;
+            border:1px solid #aaa;
+            margin-top:20px;
+            line-height: 50px;
+            text-align: center;
+            position:relative;
+        }
+        #box ul li a{
+            display: inline-block;
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div id="box">
+            <ul>
+                <li>
+                    <a href="javascript:;">Material Design </a>
+                </li>
+                <li>
+                    <a href="javascript:;">Google is trying</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Button Click</a>
+                </li>
+                <li>
+                    <a href="javascript:;">ripple 元素</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Android L</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Designers</a>
+                </li>
+                <li>
+                    <a href="javascript:;">交互效果</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    var obox = null;
+    var ali = null;
+    var n = 1;
+    window.onload = function (){
+        var obox = document.getElementById('box');
+        var ali = obox.getElementsByTagName('li');
+        
+//        接收五个参数，el：点击的元素（必填）只能是原生节点
+//        fn:回调函数，当点击的时候触发的函数
+//        WH:初始时最小圆，就是点击一瞬间时创建的圆的宽高，数值类形，默认值 20
+//        backColor：圆的颜色，字符串类形，默认值  '#999'
+//        scale：放大倍数，从小变大的最大范围，就是 transform:scale() 的值，默认值  7
+        
+        var wat = new WaterWave();
+        wat.init({
+            el:ali,
+            scale:14
+        });
+    }
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
