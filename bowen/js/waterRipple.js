@@ -27,31 +27,31 @@ function WaterWave(){
                 'position: absolute;'+
                 'top:0;'+
                 'left:0;'+
-                'opacity:0.8;'+
-                'filter:alpha(opacity=80);'+
-                '-moz-opacity:0.8;'+
-                '-khtml-opacity:0.8;'+
-                '-webkit-opacity:0.8;'+
-                '-webkit-animation: rippleMove .75s ease-out forwards;}'+
-                '-moz-animation: rippleMove .75s ease-out forwards;}'+
-                '-ms-animation: rippleMove .75s ease-out forwards;}'+
-                '-o-animation: rippleMove .75s ease-out forwards;}'+
-                'animation: rippleMove .75s ease-out forwards;}'+
+                'opacity:0.5;'+
+                'filter:alpha(opacity=50);'+
+                '-moz-opacity:0.5;'+
+                '-khtml-opacity:0.5;'+
+                '-webkit-opacity:0.5;'+
+                '-webkit-animation: rippleMove 1.5s ease-out forwards;}'+
+                '-moz-animation: rippleMove 1.5s ease-out forwards;}'+
+                '-ms-animation: rippleMove 1.5s ease-out forwards;}'+
+                '-o-animation: rippleMove 1.5s ease-out forwards;}'+
+                'animation: rippleMove 1.5s ease-out forwards;}'+
 
             '@-webkit-keyframes rippleMove{'+
-                'from{opacity: .8;-webkit-transform:scale(1);}'+
+                'from{opacity: .5;-webkit-transform:scale(1);}'+
                 'to{opacity: 0;-webkit-transform:scale('+this.settins.scale+');}}'+
             '@-moz-keyframes rippleMove{'+
-                'from{opacity: .8;-moz-transform:scale(1);}'+
+                'from{opacity: .5;-moz-transform:scale(1);}'+
                 'to{opacity: 0;-moz-transform:scale('+this.settins.scale+');}}'+
             '@-ms-keyframes rippleMove{'+
-                'from{opacity: .8;-ms-transform:scale(1);}'+
+                'from{opacity: .5;-ms-transform:scale(1);}'+
                 'to{opacity: 0;-ms-transform:scale('+this.settins.scale+');}}'+
             '@-o-keyframes rippleMove{'+
-                'from{opacity: .8;-o-transform:scale(1);}'+
+                'from{opacity: .5;-o-transform:scale(1);}'+
                 'to{opacity: 0;-o-transform:scale('+this.settins.scale+');}}'+
             '@keyframes rippleMove{'+
-                'from{opacity: .8;transform:scale(1);}'+
+                'from{opacity: .5;transform:scale(1);}'+
                 'to{opacity: 0;transform:scale('+this.settins.scale+');}}';
         
         head.appendChild(style);
@@ -65,16 +65,23 @@ function WaterWave(){
     };
     
     WaterWave.prototype.found = function (obj){
-        var ev = window.event||ev;
+        var ev = window.event || ev || arguments.callee.caller.arguments[0];
         var span = document.createElement('span');
+
+        var TT = document.body.scrollTop || document.documentElement.scrollTop;
+        var LL = document.body.scrollLeft || document.documentElement.scrollLeft;
+
         var pl = obj.offsetLeft;
         var pt = obj.offsetTop;
-        var L = ev.clientX-pl-this.settins.WH/2;
-        var T = ev.clientY-pt-this.settins.WH/2;
+        var L = (ev.clientX - pl - this.settins.WH / 2) + LL;
+        var T = (ev.clientY - pt - this.settins.WH / 2) + TT;
         var This = this;
+        var n = 1;
+        
         n++;
         
         obj.style.overflow = 'hidden';
+        obj.style.position = 'relative';
 
         span.style.marginTop = T+'px';
         span.style.marginLeft = L+'px';
